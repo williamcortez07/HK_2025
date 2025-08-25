@@ -1,0 +1,428 @@
+# REQUERIMIENTOS PARA EL DESARROLLO DEL SISTEMA DE CONTROL FITOSANITARIO BASADO EN IA
+
+## 1. METODOLOGÍA DE DESARROLLO
+
+### 1.1 Enfoque Metodológico
+
+Se utilizará una metodología ágil Scrum adaptada al contexto del proyecto, con las siguientes características:
+
+- **Sprints**: Ciclos de desarrollo de 2 semanas con entregables funcionales al final de cada sprint
+- **Roles**:
+  - Product Owner: Representante de los usuarios finales (productores, técnicos)
+  - Scrum Master: Facilitador del proceso y eliminador de impedimentos
+  - Equipo de Desarrollo: Desarrolladores, diseñadores, especialistas en IA, expertos en agronomía
+- **Artefactos**:
+  - Product Backlog: Lista priorizada de todas las funcionalidades
+  - Sprint Backlog: Funcionalidades seleccionadas para el sprint actual
+  - Incremento: Producto funcional al final de cada sprint
+- **Eventos**:
+  - Sprint Planning: Planificación del trabajo del sprint
+  - Daily Scrum: Reunión diaria de sincronización (15 minutos)
+  - Sprint Review: Demostración del incremento a stakeholders
+  - Sprint Retrospective: Análisis y mejora del proceso
+
+### 1.2 Prácticas de Ingeniería
+
+- Desarrollo basado en pruebas (TDD)
+- Integración continua y entrega continua (CI/CD)
+- Revisión de código por pares
+- Programación en parejas para componentes críticos
+- Control de versiones con Git (GitFlow como estrategia de ramificación)
+- Documentación continua
+
+## 2. PASOS PARA EL DESARROLLO
+
+### 2.1 Fase de Inicio (1 mes)
+
+1. **Análisis de Requisitos Detallado**
+   - Entrevistas con usuarios finales (productores, técnicos, investigadores)
+   - Definición de historias de usuario y criterios de aceptación
+   - Priorización de funcionalidades
+
+2. **Diseño de Arquitectura**
+   - Definición de componentes y sus interacciones
+   - Selección de tecnologías específicas
+   - Diseño de la base de datos
+   - Diseño de APIs y contratos de servicios
+
+3. **Configuración del Entorno de Desarrollo**
+   - Configuración de repositorios y flujos de trabajo
+   - Configuración de entornos de desarrollo, pruebas y producción
+   - Configuración de herramientas de CI/CD
+
+### 2.2 Fase de Desarrollo (6 meses)
+
+#### Sprint 1-2: Fundamentos
+1. Implementación de la estructura básica del proyecto
+2. Configuración de bases de datos
+3. Implementación del sistema de autenticación y autorización
+4. Desarrollo de APIs básicas
+
+#### Sprint 3-4: Módulo de Identificación de Plagas/Enfermedades
+1. Recopilación y preparación de dataset de imágenes
+2. Entrenamiento del modelo de clasificación
+3. Desarrollo de API para el modelo de IA
+4. Implementación de la interfaz de captura y análisis de imágenes
+
+#### Sprint 5-6: Módulo de Recomendaciones
+1. Desarrollo del motor de reglas para recomendaciones básicas
+2. Implementación del sistema de recomendación contextual
+3. Desarrollo de la biblioteca de tratamientos
+4. Implementación de la interfaz de recomendaciones
+
+#### Sprint 7-8: Módulo de Geolocalización
+1. Implementación de la captura de coordenadas GPS
+2. Desarrollo de la visualización en mapa
+3. Implementación de filtros y capas de visualización
+4. Desarrollo del sistema de alertas de proximidad
+
+#### Sprint 9-10: Dashboard y Estadísticas
+1. Desarrollo de paneles personalizados
+2. Implementación de visualizaciones en tiempo real
+3. Desarrollo del sistema de exportación de datos
+4. Implementación de informes automáticos
+
+#### Sprint 11-12: Integración y Optimización
+1. Integración completa de todos los módulos
+2. Optimización de rendimiento
+3. Implementación de capacidades offline
+4. Pruebas de carga y estrés
+
+### 2.3 Fase de Pruebas y Validación (2 meses)
+
+1. **Pruebas Internas**
+   - Pruebas unitarias y de integración
+   - Pruebas de rendimiento y escalabilidad
+   - Pruebas de seguridad
+   - Pruebas de usabilidad
+
+2. **Pruebas con Usuarios Finales**
+   - Pruebas beta con grupo selecto de usuarios
+   - Recopilación de feedback
+   - Ajustes basados en feedback
+
+3. **Validación del Modelo de IA**
+   - Evaluación de precisión en condiciones reales
+   - Ajustes y reentrenamiento si es necesario
+   - Validación con expertos en fitopatología
+
+### 2.4 Fase de Despliegue (1 mes)
+
+1. **Preparación para Producción**
+   - Configuración de infraestructura de producción
+   - Migración de datos
+   - Configuración de monitoreo y alertas
+
+2. **Lanzamiento**
+   - Despliegue gradual (por regiones o grupos de usuarios)
+   - Monitoreo intensivo post-lanzamiento
+   - Soporte técnico dedicado
+
+3. **Capacitación**
+   - Desarrollo de materiales de capacitación
+   - Sesiones de capacitación para diferentes perfiles de usuario
+   - Configuración de sistema de soporte
+
+## 3. FUNCIONALIDADES DEL SISTEMA
+
+### 3.1 Funcionalidades Principales
+
+#### 3.1.1 Identificación Automatizada de Plagas y Enfermedades
+- Captura de imágenes desde la aplicación
+- Análisis automático mediante IA
+- Identificación de plagas y enfermedades comunes del frijol
+- Presentación de resultados con nivel de confianza
+- Historial de diagnósticos
+
+#### 3.1.2 Recomendaciones Técnicas Personalizadas
+- Recomendaciones basadas en el diagnóstico
+- Opciones de tratamiento (orgánico y convencional)
+- Consideración de factores contextuales (clima, ubicación, historial)
+- Seguimiento de efectividad de tratamientos
+- Alertas y recordatorios
+
+#### 3.1.3 Gestión de Usuarios
+- Registro y autenticación
+- Perfiles diferenciados (productores, estudiantes, técnicos, investigadores)
+- Gestión de parcelas/cultivos
+- Historial de actividades
+- Preferencias y configuraciones
+
+#### 3.1.4 Geolocalización de Afectaciones
+- Registro de coordenadas GPS
+- Visualización en mapa de incidencias
+- Filtros por tipo de plaga/enfermedad, temporalidad, severidad
+- Alertas de proximidad
+- Exportación de datos georreferenciados
+
+#### 3.1.5 Dashboard para Visualización
+- Paneles personalizados según tipo de usuario
+- Visualizaciones en tiempo real
+- Tendencias y patrones
+- Exportación de datos e informes
+- Configuración de alertas
+
+#### 3.1.6 Gestión de Datos Estadísticos
+- Recopilación automática de datos
+- Agregación por variables relevantes
+- Análisis de tendencias
+- Predicciones básicas de riesgo
+- Compartición de datos con instituciones de investigación
+
+### 3.2 Funcionalidades Secundarias
+
+#### 3.2.1 Sistema de Alerta Temprana
+- Predicción de brotes basada en condiciones climáticas
+- Alertas preventivas
+- Recomendaciones proactivas
+
+#### 3.2.2 Comunidad y Foro
+- Intercambio de experiencias
+- Consultas a expertos
+- Compartición de casos
+
+#### 3.2.3 Biblioteca de Conocimiento
+- Información sobre plagas y enfermedades
+- Guías de manejo integrado
+- Contenido multimedia educativo
+
+#### 3.2.4 Modo Offline
+- Funcionamiento básico sin conexión
+- Sincronización cuando se recupera conectividad
+- Almacenamiento local de datos esenciales
+
+## 4. ALCANCES Y LÍMITES
+
+### 4.1 Alcances
+
+- **Cobertura Geográfica**: Inicialmente enfocado en regiones productoras de frijol en el país, con potencial de expansión a otras regiones.
+
+- **Plagas y Enfermedades**: El sistema cubrirá las 10 plagas y enfermedades más comunes del frijol en la región, incluyendo:
+  - Mosaico dorado
+  - Antracnosis
+  - Bacteriosis común
+  - Roya
+  - Mancha angular
+  - Mustia hilachosa
+  - Mosaico común
+  - Pudriciones radiculares
+  - Gorgojos
+  - Mosca blanca
+
+- **Usuarios**: El sistema estará diseñado para ser utilizado por:
+  - Pequeños y medianos productores de frijol
+  - Estudiantes de agronomía
+  - Técnicos agrícolas
+  - Investigadores y académicos
+
+- **Plataformas**: Disponible como aplicación móvil (Android e iOS) y versión web progresiva.
+
+- **Idiomas**: Español como idioma principal, con posibilidad de añadir idiomas indígenas relevantes en fases posteriores.
+
+### 4.2 Límites
+
+- **Precisión del Diagnóstico**: El sistema tendrá una precisión objetivo del 85% en la identificación de plagas y enfermedades, sujeto a la calidad de las imágenes proporcionadas y las condiciones de captura.
+
+- **Conectividad**: Aunque se implementarán capacidades offline, algunas funcionalidades avanzadas requerirán conexión a internet.
+
+- **Recomendaciones**: Las recomendaciones serán de carácter orientativo y no sustituyen el criterio de un profesional en casos complejos o atípicos.
+
+- **Cultivos**: En su primera versión, el sistema se enfocará exclusivamente en cultivos de frijol, sin abordar otros cultivos.
+
+- **Integración con Dispositivos**: La primera versión no incluirá integración con dispositivos IoT o sensores especializados.
+
+- **Análisis de Laboratorio**: El sistema no sustituye análisis de laboratorio para casos que requieran confirmación especializada.
+
+## 5. TÉRMINOS DE REFERENCIA (TDR)
+
+### 5.1 Antecedentes
+
+El cultivo de frijol es fundamental para la seguridad alimentaria en la región, siendo una fuente importante de proteína y sustento económico para miles de familias productoras. Sin embargo, las pérdidas por plagas y enfermedades pueden alcanzar hasta un 40% de la producción si no se identifican y controlan a tiempo. La falta de acceso a asistencia técnica especializada y oportuna agrava esta situación, especialmente en zonas rurales alejadas.
+
+### 5.2 Objetivo General
+
+Desarrollar una aplicación móvil y web que permita a productores, estudiantes y técnicos identificar y controlar oportunamente plagas y enfermedades en cultivos de frijol mediante el uso de inteligencia artificial, contribuyendo a reducir pérdidas económicas y mejorar la seguridad alimentaria.
+
+### 5.3 Objetivos Específicos
+
+1. Implementar un sistema de identificación automatizada de plagas y enfermedades del frijol con una precisión mínima del 85%.
+2. Desarrollar un motor de recomendaciones técnicas personalizadas basado en diagnósticos, condiciones locales y mejores prácticas.
+3. Crear un sistema de geolocalización y visualización de incidencias para monitoreo y alerta temprana.
+4. Implementar un dashboard para análisis de datos y toma de decisiones a nivel individual y colectivo.
+5. Desarrollar capacidades offline para garantizar funcionalidad en zonas con conectividad limitada.
+
+### 5.4 Productos Esperados
+
+1. **Aplicación Móvil**:
+   - Compatible con Android 7.0+ e iOS 12.0+
+   - Interfaz intuitiva adaptada a diferentes niveles de alfabetización digital
+   - Funcionalidades principales accesibles offline
+
+2. **Aplicación Web**:
+   - Responsive para diferentes dispositivos
+   - Dashboard avanzado para visualización y análisis
+   - Herramientas de administración y gestión
+
+3. **API de Servicios**:
+   - Documentada con OpenAPI/Swagger
+   - Segura y escalable
+   - Preparada para integraciones futuras
+
+4. **Modelo de IA**:
+   - Entrenado con dataset representativo de la región
+   - Precisión mínima del 85% en condiciones controladas
+   - Optimizado para ejecución en dispositivos móviles
+
+5. **Documentación**:
+   - Manual de usuario para diferentes perfiles
+   - Documentación técnica del sistema
+   - Guía de mantenimiento y actualización
+
+### 5.5 Equipo Requerido
+
+1. **Gerente de Proyecto**: Responsable de la coordinación general y cumplimiento de objetivos.
+
+2. **Desarrolladores**:
+   - 2 Desarrolladores Frontend (React/React Native)
+   - 2 Desarrolladores Backend (Node.js/Python)
+   - 1 Desarrollador de Base de Datos
+
+3. **Especialistas**:
+   - 1 Especialista en IA/Machine Learning
+   - 1 Diseñador UX/UI
+   - 1 Especialista en Fitopatología/Agronomía
+
+4. **Soporte**:
+   - 1 Especialista en QA/Testing
+   - 1 DevOps Engineer
+
+### 5.6 Cronograma General
+
+- **Mes 1-2**: Análisis, diseño y configuración
+- **Mes 3-8**: Desarrollo iterativo (sprints)
+- **Mes 9-10**: Pruebas y validación
+- **Mes 11**: Despliegue y capacitación
+- **Mes 12**: Soporte post-implementación y ajustes
+
+### 5.7 Presupuesto Estimado
+
+El presupuesto se estructura en las siguientes categorías:
+
+1. **Recursos Humanos**: 65% del presupuesto total
+2. **Infraestructura y Servicios Cloud**: 15% del presupuesto total
+3. **Licencias y Herramientas**: 5% del presupuesto total
+4. **Capacitación y Despliegue**: 10% del presupuesto total
+5. **Contingencia**: 5% del presupuesto total
+
+### 5.8 Criterios de Aceptación
+
+1. **Funcionalidad**: Cumplimiento de todas las funcionalidades principales descritas en los requerimientos.
+
+2. **Usabilidad**: Evaluación positiva en pruebas de usabilidad con usuarios representativos de cada perfil.
+
+3. **Rendimiento**:
+   - Tiempo de respuesta para diagnóstico < 5 segundos (con conexión)
+   - Tiempo de carga de dashboard < 3 segundos
+   - Sincronización offline-online < 2 minutos
+
+4. **Precisión**:
+   - Modelo de IA con precisión > 85% en dataset de validación
+   - Validación por expertos en fitopatología
+
+5. **Seguridad**:
+   - Cumplimiento de estándares OWASP Top 10
+   - Protección adecuada de datos personales
+
+6. **Disponibilidad**: Uptime del sistema > 99.5% en horario operativo
+
+## 6. REQUISITOS TÉCNICOS
+
+### 6.1 Requisitos de Hardware
+
+#### Cliente (Dispositivos Móviles)
+- Procesador: 1.2 GHz o superior
+- RAM: 2 GB mínimo
+- Almacenamiento: 100 MB disponibles para la aplicación
+- Cámara: 5 MP o superior
+- GPS integrado
+
+#### Servidor
+- Procesadores: 8 vCPUs mínimo
+- RAM: 16 GB mínimo
+- Almacenamiento: 500 GB SSD mínimo
+- Ancho de banda: 100 Mbps mínimo
+
+### 6.2 Requisitos de Software
+
+#### Cliente
+- Android 7.0+ o iOS 12.0+
+- Navegadores: Chrome 70+, Safari 12+, Firefox 60+, Edge 80+
+
+#### Servidor
+- Sistema Operativo: Linux (Ubuntu 20.04 LTS o similar)
+- Contenedores: Docker 19.03+
+- Orquestación: Kubernetes 1.18+
+- Base de Datos: PostgreSQL 12+, MongoDB 4.4+
+- Caché: Redis 6.0+
+
+### 6.3 Requisitos de Seguridad
+
+- Autenticación: OAuth 2.0 / OpenID Connect
+- Autorización: RBAC (Role-Based Access Control)
+- Comunicación: TLS 1.3
+- Almacenamiento: Encriptación AES-256
+- Auditoría: Registro de todas las acciones críticas
+- Cumplimiento: GDPR/LGPD para datos personales
+
+### 6.4 Requisitos de Integración
+
+- APIs RESTful con documentación OpenAPI 3.0
+- Formatos de intercambio: JSON, GeoJSON
+- Webhooks para notificaciones en tiempo real
+- Soporte para exportación en formatos estándar (CSV, Excel, PDF)
+
+## 7. CONSIDERACIONES ADICIONALES
+
+### 7.1 Sostenibilidad
+
+- **Modelo de Negocio**: Se evaluarán diferentes modelos para garantizar la sostenibilidad del sistema:
+  - Freemium (funcionalidades básicas gratuitas, avanzadas de pago)
+  - Suscripción para perfiles profesionales
+  - Patrocinio institucional
+  - Licenciamiento a organizaciones
+
+- **Mantenimiento**: Plan de mantenimiento y actualización por 3 años mínimo.
+
+- **Comunidad**: Fomento de comunidad de usuarios para retroalimentación y mejora continua.
+
+### 7.2 Escalabilidad
+
+- **Usuarios**: Diseño para soportar hasta 100,000 usuarios activos.
+
+- **Cobertura**: Arquitectura preparada para expandirse a otros cultivos en el futuro.
+
+- **Funcionalidades**: Sistema modular que permita añadir nuevas funcionalidades sin afectar las existentes.
+
+### 7.3 Propiedad Intelectual
+
+- **Código Fuente**: Definición clara de licenciamiento (propietario vs. open source).
+
+- **Datos**: Políticas de uso de datos recopilados, respetando privacidad y normativas.
+
+- **Modelo de IA**: Definición de propiedad y derechos sobre el modelo entrenado.
+
+### 7.4 Gestión de Riesgos
+
+- **Técnicos**: Plan de mitigación para riesgos técnicos (precisión del modelo, conectividad, etc.).
+
+- **Operativos**: Estrategias para garantizar adopción y uso efectivo.
+
+- **Financieros**: Plan de contingencia para variaciones presupuestarias.
+
+## 8. CONCLUSIONES
+
+El desarrollo del Sistema de Control Fitosanitario Basado en IA representa una oportunidad significativa para mejorar la productividad y sostenibilidad del cultivo de frijol, contribuyendo directamente a la seguridad alimentaria y estabilidad económica de las familias productoras.
+
+La metodología ágil propuesta, combinada con un enfoque centrado en el usuario y una arquitectura técnica robusta, permitirá desarrollar una solución que responda efectivamente a las necesidades reales de los productores, técnicos y otros actores del sector.
+
+El éxito del proyecto dependerá no solo de la calidad técnica de la solución, sino también de la participación activa de los usuarios finales durante todo el proceso de desarrollo, así como de estrategias efectivas de capacitación y acompañamiento durante la implementación.
