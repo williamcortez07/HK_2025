@@ -1,0 +1,171 @@
+Table Usuarios {
+  id int [pk, increment]
+  nombre varchar(100) 
+  correo varchar(150) unique
+  contrasena varchar(255) 
+  rol_id int 
+  fecha_creacion timestamp 
+}
+
+Table Roles {
+  id int [pk, increment]
+  nombre varchar(50)  // estudiante, docente, comunidad, moderador
+  descripcion text
+}
+
+Table Permisos {
+  id int [pk, increment]
+  nombre varchar(100)
+  descripcion text
+}
+
+Table RolPermisos {
+  id int [pk, increment]
+  rol_id int 
+  permiso_id int 
+}
+
+Table Relatos {
+  id int [pk, increment]
+  titulo varchar(200) 
+  descripcion text
+  tipo_multimedia varchar(50) // imagen, audio, video, texto
+  url_multimedia varchar(500)
+  latitud decimal(9,6)
+  longitud decimal(9,6)
+  estado varchar(50) // pendiente, aprobado, rechazado
+  id_usuario int 
+  fecha_creacion timestamp 
+}
+
+Table Biblioteca {
+  id int [pk, increment]
+  titulo varchar(200) 
+  tipo varchar(50) // receta, costumbre, saber
+  contenido text
+  id_usuario int 
+  estado varchar(50) 
+  fecha_creacion timestamp 
+}
+
+Table Eventos {
+  id int [pk, increment]
+  nombre varchar(200) 
+  descripcion text
+  fecha_inicio date
+  fecha_fin date
+  lugar varchar(200)
+  latitud decimal(9,6)
+  longitud decimal(9,6)
+  id_usuario int 
+  estado varchar(50) 
+  fecha_creacion timestamp 
+}
+
+Table Juegos {
+  id int [pk, increment]
+  nombre varchar(200)
+  tipo varchar(50) // quiz, trivia
+  pregunta text
+  opcion_a text
+  opcion_b text
+  opcion_c text
+  opcion_d text
+  respuesta_correcta char(1) // A/B/C/D
+  id_usuario int 
+  fecha_creacion timestamp 
+}
+
+Table Puntuaciones {
+  id int [pk, increment]
+  id_usuario int 
+  id_juego int 
+  puntaje int 
+  fecha timestamp 
+}
+
+Table Ranking {
+  id int [pk, increment]
+  id_usuario int 
+  puntos_totales int 
+  posicion int
+  fecha_actualizacion timestamp 
+}
+
+Table Moderacion {
+  id int [pk, increment]
+  tipo_contenido varchar(50) // relato, biblioteca, evento, juego
+  id_contenido int
+  id_moderador int
+  accion varchar(50) // aprobado, rechazado
+  comentarios text
+  fecha timestamp 
+}
+
+Table Comentarios {
+  id int [pk, increment]
+  contenido text
+  id_usuario int 
+  tipo_contenido varchar(50) // relato, biblioteca, evento, juego
+  id_contenido int
+  fecha_creacion timestamp 
+}
+
+Table Likes {
+  id int [pk, increment]
+  id_usuario int 
+  tipo_contenido varchar(50) // relato, biblioteca, evento, juego
+  id_contenido int
+  fecha timestamp 
+}
+
+Table Notificaciones {
+  id int [pk, increment]
+  id_usuario int 
+  mensaje text
+  leido boolean 
+  fecha timestamp 
+}
+
+Table Ubicaciones {
+  id int [pk, increment]
+  nombre varchar(200)
+  descripcion text
+  latitud decimal(9,6)
+  longitud decimal(9,6)
+}
+
+Table Logros {
+  id int [pk, increment]
+  nombre varchar(100)
+  descripcion text
+  icono varchar(255) // URL del badge o icono
+  tipo varchar(50) // publicacion, exploracion, juegos, evento, interaccion
+  cantidad_requerida int
+}
+
+Table UsuarioLogros {
+  id int [pk, increment]
+  id_usuario int
+  id_logro int 
+  fecha_desbloqueo timestamp 
+  progreso int 
+}
+
+// Relaciones principales
+Ref: Usuarios.rol_id > Roles.id
+Ref: Relatos.id_usuario > Usuarios.id
+Ref: Biblioteca.id_usuario > Usuarios.id
+Ref: Eventos.id_usuario > Usuarios.id
+Ref: Juegos.id_usuario > Usuarios.id
+Ref: Puntuaciones.id_usuario > Usuarios.id
+Ref: Puntuaciones.id_juego > Juegos.id
+Ref: Ranking.id_usuario > Usuarios.id
+Ref: Moderacion.id_moderador > Usuarios.id
+Ref: Comentarios.id_usuario > Usuarios.id
+Ref: Likes.id_usuario > Usuarios.id
+Ref: Notificaciones.id_usuario > Usuarios.id
+Ref: UsuarioLogros.id_usuario > Usuarios.id
+Ref: UsuarioLogros.id_logro > Logros.id
+Ref: RolPermisos.rol_id > Roles.id
+Ref: RolPermisos.permiso_id > Permisos.id
