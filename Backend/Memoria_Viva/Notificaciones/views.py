@@ -11,12 +11,11 @@ from .models import Notificacion
 from .serializers import NotificacionSerializer
 
 
+
 # CRUD para Notificaciones
+class NotificacionListCreateView(generics.ListCreateAPIView):
     queryset = Notificacion.objects.all()
     serializer_class = NotificacionSerializer
-    class NotificacionListCreateView(generics.ListCreateAPIView):
-        queryset = Notificacion.objects.all()
-        serializer_class = NotificacionSerializer
 
     @swagger_auto_schema(
         operation_description="Lista todas las notificaciones o crea una nueva.",
@@ -44,20 +43,9 @@ from .serializers import NotificacionSerializer
         logger.info(f"Notificación creada para usuario {instance.usuario} por {self.request.user}")
         return instance
 
-    def perform_update(self, serializer):
-        instance = serializer.save()
-        logger.info(f"Notificación editada para usuario {instance.usuario} por {self.request.user}")
-        return instance
-
-    def perform_destroy(self, instance):
-        logger.info(f"Notificación eliminada para usuario {instance.usuario} por {self.request.user}")
-        return super().perform_destroy(instance)
-
+class NotificacionRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Notificacion.objects.all()
     serializer_class = NotificacionSerializer
-    class NotificacionRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
-        queryset = Notificacion.objects.all()
-        serializer_class = NotificacionSerializer
 
     @swagger_auto_schema(
         operation_description="Obtiene el detalle de una notificación por ID.",

@@ -1,7 +1,5 @@
+
 from django.shortcuts import render
-
-
-
 from rest_framework import generics, permissions
 from drf_yasg.utils import swagger_auto_schema
 from drf_yasg import openapi
@@ -9,6 +7,16 @@ from Usuarios.permissions import IsAdmin, IsModerator, IsOwnerOrReadOnly
 from Memoria_Viva.logging_config import logger
 from .models import Memoria, Medio, ComentarioMemoria, ReaccionMemoria
 from .serializers import MemoriaSerializer, MedioSerializer, ComentarioMemoriaSerializer, ReaccionMemoriaSerializer
+
+# CRUD para Medios
+class MedioListCreateView(generics.ListCreateAPIView):
+    queryset = Medio.objects.all()
+    serializer_class = MedioSerializer
+
+    def get_permissions(self):
+        if self.request.method == 'GET':
+            return [permissions.AllowAny()]
+        return [permissions.IsAuthenticated()]
 
 
 
@@ -110,14 +118,14 @@ class MemoriaRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
             logger.info(f"Memoria editada: {instance.titulo} por {self.request.user}")
             return instance
 
-        def perform_destroy(self, instance):
-            logger.info(f"Memoria eliminada: {instance.titulo} por {self.request.user}")
-            return super().perform_destroy(instance)
+    def perform_destroy(self, instance):
+        logger.info(f"Memoria eliminada: {instance.titulo} por {self.request.user}")
+        return super().perform_destroy(instance)
 
-	def get_permissions(self):
-		if self.request.method == 'GET':
-			return [permissions.AllowAny()]
-		return [permissions.IsAuthenticated()]
+    def get_permissions(self):
+        if self.request.method == 'GET':
+            return [permissions.AllowAny()]
+        return [permissions.IsAuthenticated()]
 
 class MedioRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
 	queryset = Medio.objects.all()
