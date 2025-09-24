@@ -148,7 +148,7 @@ Desarrollar una **aplicación educativa tipo PWA** que permita a los usuarios re
 
 #### 7.1.2 Backend (API REST)
 
-
+- **Opción 1 (recomendada en hackathon):** **Node.js (Express)** → rápido de montar.
     
 - **Opción 2:** Django REST Framework (más robusto, pero más tiempo de setup).
 
@@ -320,3 +320,9 @@ graph TD
     
 6. Se envían notificaciones push a los usuarios interesados.
     
+
+
+
+
+
+
